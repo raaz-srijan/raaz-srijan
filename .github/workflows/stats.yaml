@@ -1,11 +1,9 @@
 name: GitHub Metrics
 
 on:
-  # Update every day at midnight
   schedule:
     - cron: "0 0 * * *"
 
-  # Allow manual updates from Actions tab
   workflow_dispatch:
 
 jobs:
@@ -20,44 +18,41 @@ jobs:
         uses: lowlighter/metrics@latest
 
         with:
-          # Your GitHub username
+          # GitHub account
           user: raaz-srijan
 
-          # Output file
+          # Generated file
           filename: metrics.svg
 
-          # GitHub token
+          # Token
           token: ${{ secrets.METRICS_TOKEN }}
 
-          # Professional clean template
+          # Theme
           template: classic
 
-          # Metrics sections
+          # Core information
           base: header, activity, community, repositories, metadata
 
-          # Appearance
+          # Timezone
           config_timezone: Asia/Kathmandu
+
+          # Display
           config_display: large
 
-          # Languages
+          # Most used programming languages
           plugin_languages: yes
-          plugin_languages_limit: 8
+          plugin_languages_limit: 6
           plugin_languages_sections: most-used
+          plugin_languages_details: percentage
 
-          # Recent activity
+          # Recent GitHub activity
           plugin_activity: yes
           plugin_activity_limit: 5
 
-          # Repository statistics
+          # Repository information
           plugin_repositories: yes
-          plugin_repositories_featured: |
-            your-best-project-name
+          plugin_repositories_featured: ""
 
-          # Coding habits
-          plugin_habits: yes
-          plugin_habits_days: 30
-          plugin_habits_facts: yes
-
-          # Isometric contribution calendar
+          # Contribution calendar
           plugin_isocalendar: yes
           plugin_isocalendar_duration: half-year
